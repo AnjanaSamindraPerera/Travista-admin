@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Sidebar from '../../Components/Sidebar';
+import Drawer from '../../Components/Drawer';
 //material ui
 import withStyles from '@material-ui/core/styles/withStyles';
 import TextField from '@material-ui/core/TextField';
@@ -20,7 +20,8 @@ const styles = {
   //classes.these atributes
 
   form: {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: '60px'
   },
   pageTittle: {
     // color:'#43a047',
@@ -102,18 +103,12 @@ class settingsPassword extends Component {
 
     return (
       <div style={{ backgroundColor: '#FFFF' }}>
-        <Grid
-          container
-          spacing={10}
-          className={classes.form}
-          component={Paper}
-          style={{ height: '100vh' }}
-        >
-          <Grid item sm>
-            <Sidebar />
+        <Grid container spacing={10} className={classes.form} component={Paper}>
+          <Grid item sm={3}>
+            <Drawer />
           </Grid>
 
-          <Grid item sm>
+          <Grid item sm={12}>
             <Typography variant="h2" className={classes.pageTittle}>
               Change Password
             </Typography>

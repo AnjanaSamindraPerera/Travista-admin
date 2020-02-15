@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import Pic from '../images/Pic.png';
-import { Link } from 'react-router-dom';
 import SL2 from '../images/SL2.jpg';
-import Copyright from '../util/Copyright';
 
 //material ui
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -14,7 +11,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -27,11 +23,14 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { signupUser } from '../redux/actions/userAction';
 
+import Drawer from '../Components/Drawer';
+
 const styles = {
   //classes.these atributes
 
   form: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '10px auto 5px auto'
   },
   pageTittle: {
     // color:'#43a047',
@@ -131,13 +130,21 @@ class signup extends Component {
     const { errors } = this.state;
 
     return (
-      <Grid container spacing={10} className={classes.form}>
-        <Grid item sm className={classes.image2}>
-          <img src={Pic} alt="logo" className={classes.image} />
+      <Grid container>
+        <Grid item sm={1}>
+          {/* <img src={Pic} alt="logo" className={classes.image} /> */}
+          <Drawer />
         </Grid>
 
-        <Grid item sm component={Paper} elevation={6}>
+        <Grid
+          item
+          sm={10}
+          component={Paper}
+          elevation={6}
+          className={classes.form}
+        >
           <div className={classes.paper}>
+            <br />
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
@@ -147,7 +154,7 @@ class signup extends Component {
               component="h1"
               className={classes.pageTittle}
             >
-              Sign up
+              Register an admin
             </Typography>
             <form noValidate onSubmit={this.handleSubmit}>
               <TextField
@@ -234,14 +241,15 @@ class signup extends Component {
                 className={classes.button}
                 disabled={loading}
               >
-                Signup
+                Register
                 {loading && (
                   <CircularProgress size={30} className={classes.progress} />
                 )}
               </Button>
               <br />
-
-              <small>
+              <br />
+              <br />
+              {/* <small>
                 <Link
                   to="/login"
                   variant="body2"
@@ -253,7 +261,7 @@ class signup extends Component {
               </small>
               <Box mt={5}>
                 <Copyright />
-              </Box>
+              </Box> */}
             </form>
           </div>
         </Grid>

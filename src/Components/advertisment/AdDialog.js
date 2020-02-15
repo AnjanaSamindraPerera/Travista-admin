@@ -152,19 +152,22 @@ class AdDialog extends Component {
           <div className="Post-user-avatar">
             <img src={userImage} alt="Chris" />
           </div>
-          <Typography variant="h5" color="primary">
+          <Typography variant="h6" color="primary">
             {userHandle}
           </Typography>
-          <div className="Post-caption">
-            <Typography variant="body2" color="textSecondary">
-              {dayjs(createdAt).fromNow()}
-            </Typography>
-          </div>
+        </div>
+
+        <div className="Post-caption">
+          <Typography variant="body2" color="textSecondary">
+            {dayjs(createdAt).fromNow()}
+          </Typography>
         </div>
         {/* {deleteButton} */}
         <CardContent className={classes.content}>
-          <div className="Post-caption">
-            <strong>{body}</strong>
+          <div className="Post-caption1">
+            <Typography variant="body2" color="initial">
+              {body}
+            </Typography>
           </div>
 
           <div className="Post-image">

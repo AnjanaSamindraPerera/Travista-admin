@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
-import ReviewSkeleton from '../util/skeltons/ReviewSkelton';
-import StripeCheckout from 'react-stripe-checkout';
+
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-//components
-import Cover from '../Components/Cover.js';
-import Review from '../Components/Review.js';
-import Profile from '../Components/Profile';
-import About from '../Components/About';
-import Ad from '../Components/advertisment/Ad.js';
 
-import PostPaidAd from '../Components/PostPaidAd';
+//components
+
+import Profile from '../Components/Profile';
+import Ad from '../Components/advertisment/Ad.js';
 
 //import Drawer2 from '../Components/Drawer2';
 import Drawer from '../Components/Drawer';
@@ -25,8 +21,6 @@ import { getAds } from '../redux/actions/dataAction';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
 
 const styles = {
   card: {
@@ -61,22 +55,6 @@ export class home extends Component {
     if (adId) this.setState({ adIdParam: adId });
   }
 
-  // handleToken = (token, addresses) => {
-  //   console.log(token, addresses);
-
-  //   axios
-  //     .post('/checkout', { token })
-  //     .then(res => {
-  //       console.log(res.data);
-  //       if (res.data === 'success') {
-  //         toast('success ! check emails for details', { type: 'success' });
-  //       } else {
-  //         toast('something went wrong', { type: 'error' });
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
   handleToken = async (token, addresses) => {
     const response = await axios.post('/checkout', { token });
 
@@ -92,15 +70,9 @@ export class home extends Component {
 
   render() {
     const { ads, loading } = this.props.data;
-    const { reviews } = this.props.user;
+
     const { adIdParam } = this.state;
     const { classes } = this.props;
-
-    // let recentAdsMarkup = !loading ?  (
-    //   ads.map(ad => <Ad key={ad.adId} ad={ad} />)
-    // ) : (
-    //   <h1>Loading..</h1>
-    // );
 
     const recentAdsMarkup = loading ? (
       <h1>Loading..</h1>
@@ -119,42 +91,19 @@ export class home extends Component {
       })
     );
 
-    // let recentReviewsMarkup = !loading ? (
-    //   reviews.map(review => <Review key={review.reviewId} review={review} />)
-    // ) : (
-    //   <ReviewSkeleton />
-    // );
-
-    const recentReviewsMarkup = loading ? (
-      <ReviewSkeleton />
-    ) : reviews.length === 0 ? (
-      <Card className={classes.Card}>
-        <CardContent className={classes.content}>
-          <h3>No reviews yet</h3>
-        </CardContent>
-      </Card>
-    ) : (
-      <Card className={classes.Card}>
-        <GridList
-          cellHeight={150}
-          spacing={1}
-          className={classes.gridList}
-          cols={1}
-        >
-          {reviews.map(review => (
-            <GridListTile key={review.reviewId} cols={1} rows={1}>
-              <Review key={review.reviewId} review={review} />
-            </GridListTile>
-          ))}
-        </GridList>
-      </Card>
-    );
-
-    //const checkPaid = this.state.paid ? <PostPaidAd openDialog /> : null;
-
     return (
       <div>
-        <Drawer />
+        <Grid container spacing={2}>
+          <Grid item sm={2} xs={12}>
+            <Drawer />
+          </Grid>
+          <Grid item sm={7} xs={12}>
+            {recentAdsMarkup}
+          </Grid>
+          <Grid item sm={3} xs={12}>
+            <Profile />
+          </Grid>
+        </Grid>
       </div>
     );
   }

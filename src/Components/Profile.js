@@ -16,7 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip'; //five info when hover over
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 // import EditIcon from '@material-ui/icons/Edit';
-import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
+//import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 //redux
 import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../redux/actions/userAction';
@@ -124,11 +124,11 @@ class Profile extends Component {
               <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
             </div>
 
-            <Tooltip title="Logout" placement="top">
+            {/* <Tooltip title="Logout" placement="top">
               <IconButton onClick={this.handleLogout}>
                 <KeyboardReturn color="error" />
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
           </div>
         </Paper>
       ) : (

@@ -46,11 +46,11 @@ export const signupUser = (newUserData, history) => dispatch => {
   axios
     .post('/signupAdmin', newUserData)
     .then(res => {
-      setAuthorizationHeader(res.data.token); //call function
-      dispatch(getUserData());
-      dispatch({ type: CLEAR_ERRORS });
-
-      history.push('/'); //use in react to push a url and got to that path
+      // setAuthorizationHeader(res.data.token); //call function
+      // dispatch(getUserData());
+      //dispatch({ type: CLEAR_ERRORS });
+      console.log('Admin registered');
+      //history.push('/'); //use in react to push a url and got to that path
     })
     .catch(err => {
       dispatch({
@@ -70,7 +70,7 @@ export const logoutUser = () => dispatch => {
 export const getUserData = () => dispatch => {
   dispatch({ type: LOADING_USER });
   axios
-    .get('/user')
+    .get('/admin')
     .then(res => {
       dispatch({
         type: SET_USER,
@@ -84,7 +84,7 @@ export const uploadImage = formData => dispatch => {
   dispatch({ type: LOADING_USER });
 
   axios
-    .post('/user/imagePro', formData)
+    .post('/admin/image', formData)
     .then(() => {
       dispatch(getUserData());
     })
@@ -107,7 +107,7 @@ export const editUserDetails = userData => dispatch => {
   console.log(userData);
   dispatch({ type: LOADING_USER });
   axios
-    .post('/user', userData)
+    .post('/admin', userData)
     .then(() => {
       dispatch(getUserData());
     })
@@ -161,7 +161,7 @@ export const recoverPassword = data => dispatch => {
 //change password
 export const changePassword = data => dispatch => {
   axios
-    .post('/user/change', data)
+    .post('/admin/changepw', data)
     .then(res => {
       dispatch({ type: CLEAR_ERRORS });
 
@@ -186,7 +186,7 @@ export const changePassword = data => dispatch => {
 //change email
 export const changeEmail = data => dispatch => {
   axios
-    .post('/user/changeEmail', data)
+    .post('/admin/changeEmailAdmin', data)
     .then(res => {
       dispatch({ type: CLEAR_ERRORS });
 
@@ -211,7 +211,7 @@ export const changeEmail = data => dispatch => {
 //delete account
 export const deleteUser = data => dispatch => {
   axios
-    .post('/user/deleteUser', data)
+    .post('/admin/deleteAdmin', data)
     .then(res => {
       dispatch({ type: CLEAR_ERRORS });
 

@@ -10,6 +10,7 @@ import home from './Pages/home';
 import user from './Pages/user';
 import login from './Pages/login';
 import signup from './Pages/signup';
+import edit from './Pages/edit';
 import settings from './Pages/settings';
 import forgotPassword from './Pages/forgotPassword';
 import settingsPassword from './Pages/settings/settingsPassword';
@@ -77,7 +78,7 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-
+                <Route exact path="/edit" component={edit} />
                 <Route exact path="/settings" component={settings} />
                 <Route
                   exact
@@ -89,6 +90,7 @@ class App extends Component {
                   path="/settingsDelete"
                   component={settingsDelete}
                 />
+
                 <Route exact path="/settingsEmail" component={settingsEmail} />
                 <Route exact path="/user" component={user} />
                 <Route exact path="/:handle/ad/:adId" component={home} />
@@ -98,7 +100,7 @@ class App extends Component {
             <div className="container2">
               <Switch>
                 <AuthRoute exact path="/login" component={login} />
-                <AuthRoute exact path="/signup" component={signup} />
+                <Route exact path="/signup" component={signup} />
                 <AuthRoute
                   exact
                   path="/forgotPassword"

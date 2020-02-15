@@ -179,14 +179,6 @@ class login extends Component {
               </Button>
               <br />
               <br />
-              <Link
-                to="/signup"
-                variant="body2"
-                className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorPrimary"
-              >
-                {' '}
-                Don't have an account ? Sign Up
-              </Link>
               <br />{' '}
               <Link
                 to="/forgotPassword"

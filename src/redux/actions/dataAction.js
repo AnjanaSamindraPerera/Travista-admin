@@ -19,7 +19,7 @@ import axios from 'axios';
 export const getAds = () => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get('/service/getAds')
+    .get('/ads')
     .then(res => {
       // console.log(res);
       dispatch({
@@ -65,7 +65,7 @@ export const unlikeAd = adId => dispatch => {
 
 export const deleteAd = adId => dispatch => {
   axios
-    .delete(`/ad/${adId}`)
+    .delete(`/adAdmin/${adId}`)
     .then(() => {
       dispatch({ type: DELETE_AD, payload: adId });
     })
