@@ -156,12 +156,12 @@ class EditAbout extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Grid container spacing={2}>
+        <Grid container spacing={8}>
           <Grid item sm={1}>
             <Drawer />
           </Grid>
 
-          <Grid item sm={7}>
+          <Grid item sm={8}>
             <Card className={classes.card}>
               <DialogTitle>
                 <span style={{ fontFamily: 'Arial', color: '#00bcd4' }}>

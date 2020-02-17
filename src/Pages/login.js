@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pic from '../images/Pic.png';
+//import Pic from '../images/Pic.png';
 import SL from '../images/SL.jpg';
 import { Link } from 'react-router-dom';
 import Copyright from '../util/Copyright';
@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 
 //bring grid
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 
 //redux
 import { connect } from 'react-redux';
@@ -26,7 +26,8 @@ const styles = {
   //classes.these atributes
 
   form: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '30px 30px 30px 30px'
   },
   pageTittle: {
     // color:'#43a047',
@@ -113,87 +114,82 @@ class login extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
-        <Grid container spacing={10} className={classes.form} component={Paper}>
-          <Grid item sm className={classes.image2}>
-            <img src={Pic} alt="logo" className={classes.image} />
-          </Grid>
+      <div className={classes.paper}>
+        <Paper>
+          <div className={classes.paper}>
+            <br />
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+          </div>
 
-          <Grid item sm component={Paper} elevation={6}>
-            <div className={classes.paper}>
-              <Avatar className={classes.avatar}>
-                <LockOutlinedIcon />
-              </Avatar>
-            </div>
-            <Typography
-              variant="h5"
-              component="h1"
-              className={classes.pageTittle}
+          <form
+            noValidate
+            onSubmit={this.handleSubmit}
+            className={classes.form}
+          >
+            <TextField
+              id="email"
+              type="email"
+              name="email"
+              label="Email"
+              variant="outlined"
+              className={classes.textField}
+              value={this.state.email}
+              onChange={this.handleChange}
+              helperText={errors.email}
+              error={errors.email ? true : false}
+              fullWidth
+            />
+            <TextField
+              id="password"
+              type="password"
+              name="password"
+              label="Password"
+              variant="outlined"
+              className={classes.textField}
+              value={this.state.password}
+              onChange={this.handleChange}
+              helperText={errors.password}
+              error={errors.password ? true : false}
+              fullWidth
+            />
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
+            )}
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              disabled={loading}
             >
-              Sign in
-            </Typography>
-            <form noValidate onSubmit={this.handleSubmit}>
-              <TextField
-                id="email"
-                type="email"
-                name="email"
-                label="Email"
-                variant="outlined"
-                className={classes.textField}
-                value={this.state.email}
-                onChange={this.handleChange}
-                helperText={errors.email}
-                error={errors.email ? true : false}
-                fullWidth
-              />
-              <TextField
-                id="password"
-                type="password"
-                name="password"
-                label="Password"
-                variant="outlined"
-                className={classes.textField}
-                value={this.state.password}
-                onChange={this.handleChange}
-                helperText={errors.password}
-                error={errors.password ? true : false}
-                fullWidth
-              />
-              {errors.general && (
-                <Typography variant="body2" className={classes.customError}>
-                  {errors.general}
-                </Typography>
+              Login
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
               )}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                disabled={loading}
-              >
-                Login
-                {loading && (
-                  <CircularProgress size={30} className={classes.progress} />
-                )}
-              </Button>
-              <br />
-              <br />
-              <br />{' '}
-              <Link
-                to="/forgotPassword"
-                variant="body2"
-                className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorPrimary"
-              >
-                {' '}
-                Forgot password?
-              </Link>
-              <Box mt={5}>
-                <Copyright />
-              </Box>
-            </form>
-          </Grid>
-        </Grid>
+            </Button>
+            <br />
+            <br />
+            <br />{' '}
+            <Link
+              to="/forgotPassword"
+              variant="body2"
+              className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorPrimary"
+            >
+              {' '}
+              Forgot password?
+            </Link>
+            <Box mt={5}>
+              <Copyright />
+            </Box>
+          </form>
+          {/* </Grid>
+        </Grid> */}
+        </Paper>
       </div>
     );
   }

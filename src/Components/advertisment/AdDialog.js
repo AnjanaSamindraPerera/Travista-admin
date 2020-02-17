@@ -59,7 +59,7 @@ const styles = {
   },
   expandButton: {
     position: 'absolute',
-    left: '60%'
+    left: '93%'
   },
   load: {
     textAlign: 'center',
@@ -121,7 +121,7 @@ class AdDialog extends Component {
 
     if (this.state.oldPath === this.state.newPath) {
       //only happens when checking notifications
-      window.location.href = '/';
+      window.location.href = '/home';
     }
   };
 

@@ -32,7 +32,7 @@ class Navbar extends Component {
               <PostAdImage />
               <PostAd />
 
-              <Link to="/">
+              <Link to="/home">
                 <MyButton tip="Home">
                   <HomeIcon />
                 </MyButton>
@@ -48,8 +48,8 @@ class Navbar extends Component {
             </Fragment>
           ) : (
             <Fragment>
-              <Button color="inherit" component={Link} to="/login">
-                Login
+              <Button color="inherit" component={Link} to="/">
+                Admin Login
               </Button>
               {/* <Button color="inherit" component={Link} to="/signup">
                 Signup

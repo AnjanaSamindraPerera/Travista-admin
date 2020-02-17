@@ -37,7 +37,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#33c9dc',
-      main: '#00bcd4', //color primary have this  //green-#43a047
+      main: '#3e2723', //color primary have this  //green-#43a047
       dark: '#008394',
       contrastText: '#fff' //text color on element
     },
@@ -60,7 +60,7 @@ if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser());
-    window.location.href = '/login';
+    window.location.href = '/';
   } else {
     store.dispatch({ type: SET_AUTHENTICATED });
     axios.defaults.headers.common['Authorization'] = token;
@@ -77,7 +77,7 @@ class App extends Component {
             <Navbar />
             <div className="container">
               <Switch>
-                <Route exact path="/" component={home} />
+                <Route exact path="/home" component={home} />
                 <Route exact path="/edit" component={edit} />
                 <Route exact path="/settings" component={settings} />
                 <Route
@@ -99,7 +99,7 @@ class App extends Component {
             </div>
             <div className="container2">
               <Switch>
-                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/" component={login} />
                 <Route exact path="/signup" component={signup} />
                 <AuthRoute
                   exact

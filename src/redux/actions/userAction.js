@@ -28,7 +28,7 @@ export const loginUser = (userData, history) => dispatch => {
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
 
-      history.push('/'); //use in react to push a url and got to that path
+      history.push('/home'); //use in react to push a url and got to that path
     })
     .catch(err => {
       dispatch({
@@ -63,7 +63,7 @@ export const signupUser = (newUserData, history) => dispatch => {
 export const logoutUser = () => dispatch => {
   localStorage.removeItem('FBIdToken'); //delete local storage auth header
   delete axios.defaults.headers.common['Authorization']; //delete axios auth  header
-  window.location.href = '/login';
+  window.location.href = '/';
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 

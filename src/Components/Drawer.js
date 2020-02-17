@@ -100,7 +100,7 @@ export default function MiniDrawer() {
   const handleLogout = () => {
     localStorage.removeItem('FBIdToken'); //delete local storage auth header
     delete axios.defaults.headers.common['Authorization']; //delete axios auth  header
-    window.location.href = '/login';
+    window.location.href = '/';
   };
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -160,7 +160,7 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
-          <MenuItem component={Link} to="/">
+          <MenuItem component={Link} to="/home">
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>

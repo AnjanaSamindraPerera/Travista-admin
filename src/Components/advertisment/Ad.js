@@ -34,6 +34,7 @@ const styles = {
     minHeight: 20
   },
   content: {
+    position: 'relative',
     padding: 25,
     objectFit: 'cover'
   }

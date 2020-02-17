@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pic from '../images/Pic.png';
+//import Pic from '../images/Pic.png';
 import { toast } from 'react-toastify';
 import SL3 from '../images/SL3.jpg';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 
 //bring grid
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 
 //redux
 import { connect } from 'react-redux';
@@ -27,7 +27,8 @@ const styles = {
   //classes.these atributes
 
   form: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '30px 30px 30px 30px'
   },
   pageTittle: {
     // color:'#43a047',
@@ -129,33 +130,31 @@ class forgotPassword extends Component {
     const { messages } = this.state;
 
     return (
-      <Grid container spacing={10} className={classes.form} component={Paper}>
-        <Grid item sm className={classes.image2}>
-          <img src={Pic} alt="logo" className={classes.image} />
-        </Grid>
+      <div className={classes.paper}>
+        <Paper>
+          <div className={classes.paper}>
+            <Typography
+              variant="h3"
+              component="h1"
+              className={classes.pageTittle}
+            >
+              {' '}
+              Forgot Password
+            </Typography>
+            <br />
 
-        <Grid item sm component={Paper} elevation={6}>
-          <br />
-          <br />
-          <br />
-
-          <Typography
-            variant="h3"
-            component="h1"
-            className={classes.pageTittle}
+            <Typography component={'div'} className={classes.pageTittle}>
+              <Box fontWeight="fontWeightBold" fontStyle="oblique" m={1}>
+                We will send you an email with instructions on how to reset your
+                password.
+              </Box>
+            </Typography>
+          </div>
+          <form
+            noValidate
+            onSubmit={this.handleSubmit}
+            className={classes.form}
           >
-            {' '}
-            Forgot Password
-          </Typography>
-          <br />
-
-          <Typography component={'div'} className={classes.pageTittle}>
-            <Box fontWeight="fontWeightBold" fontStyle="oblique" m={1}>
-              We will send you an email with instructions on how to reset your
-              password.
-            </Box>
-          </Typography>
-          <form noValidate onSubmit={this.handleSubmit}>
             <TextField
               id="email"
               type="email"
@@ -194,7 +193,7 @@ class forgotPassword extends Component {
             {messages.message && this.notify(messages.message)}
             <small>
               <Link
-                to="/login"
+                to="/"
                 variant="body2"
                 className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-body2 MuiTypography-colorPrimary"
               >
@@ -206,8 +205,8 @@ class forgotPassword extends Component {
               <Copyright />
             </Box>
           </form>
-        </Grid>
-      </Grid>
+        </Paper>
+      </div>
     );
   }
 }
