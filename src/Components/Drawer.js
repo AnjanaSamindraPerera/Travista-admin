@@ -164,7 +164,7 @@ export default function MiniDrawer() {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText secondary="Blocked posts" />
+            <ListItemText secondary="Reported posts" />
           </MenuItem>
 
           <MenuItem component={Link} to="/signup">

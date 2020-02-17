@@ -53,7 +53,8 @@ class Ad extends Component {
         createdAt,
         userImage,
         likeCount,
-        commentCount
+        commentCount,
+        reports
       },
       user: { authenticated }
     } = this.props;
@@ -80,7 +81,13 @@ class Ad extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
         </div> */}
-        <div className="bin">{deleteButton}</div>
+        <div className="bin">
+          {deleteButton}{' '}
+          <Typography variant="body2" color="secondary">
+            {'Reports : '}
+            {reports}{' '}
+          </Typography>
+        </div>
         <div className="Post-caption2">
           <Typography variant="h6" color="initial">
             {body}
